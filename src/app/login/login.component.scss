@@ -1,0 +1,25 @@
+.cards{
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 25px 25px 15px #000;
+}
+.container1{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(93, 0, 255));
+}
+label{
+    width: 130px;
+    margin-bottom: 20px;
+}
+input{
+    // border: none;
+    outline: none;
+}
+
+
