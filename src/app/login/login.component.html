@@ -1,12 +1,12 @@
 <div class="container1">
-    <div class="cards" >
+    <div class="cards"  [formGroup]="loginpage">
         <h1>login</h1>
         <label for="">Email :</label>
-        <input type="text" placeholder="email address" >
+        <input type="text" placeholder="email address" formControlName="email" >
         <br>
         <label for="">password :</label>
-        <input type="text" placeholder="password" >
+        <input type="text" placeholder="password" formControlName="password">
         <br>
-        <button class="btn btn-dark">submit</button>
+        <button class="btn btn-dark" (click)="submit()">login</button>
     </div>
 </div>

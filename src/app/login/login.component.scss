@@ -11,13 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(93, 0, 255));
+    background: linear-gradient(to right, rgba(255,0,0,0), rgb(93, 0, 255));
 }
 label{
     width: 130px;
     margin-bottom: 20px;
 }
-input{
+input{  
     outline: none;
 }
 
