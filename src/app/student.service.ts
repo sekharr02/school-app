@@ -24,4 +24,10 @@ export class StudentService {
     return this.http.get('https://64b8a34b21b9aa6eb07a012b.mockapi.io/api/students-mini/students?filter='+term)
 
   }
+  studentsort(column:any,order:any):Observable<any>{
+    return this.http.get('https://64b8a34b21b9aa6eb07a012b.mockapi.io/api/students-mini/students?sortBy='+column+"&order="+order)
+   }
+   studentpagination(limit:any,page:any):Observable<any>{
+    return this.http.get('https://64b8a34b21b9aa6eb07a012b.mockapi.io/api/students-mini/students?limit='+limit+'&page='+page)
+  }
 }

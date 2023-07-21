@@ -10,6 +10,13 @@ import { ToastrService } from 'ngx-toastr';
 export class AllStudentsComponent {
 
   public students:any=[];
+  public search:any=[];
+
+  public column:any='';
+  public order:any='';
+
+  public limit:any='';
+  public page:any='';
 
 
   constructor(private studentservice:StudentService,private toastr: ToastrService){
@@ -20,6 +27,38 @@ export class AllStudentsComponent {
       (err:any)=>{
         this.toastr.error("student form not created");
       }
+    )
+  }
+  getstudentfilter(){
+    this.studentservice.getfilterstudent(this.search).subscribe(
+      (data:any)=>{
+        this.students=data
+      },
+      (err:any)=>{
+        alert("internal server error")
+      }
+    )
+  }
+  getsortstudent(){
+    this.studentservice.studentsort(this.column,this.order).subscribe(
+      (data:any)=>{
+        this.students=data;
+    
+      },
+      (err:any)=>{
+        alert("internal error")
+      }
+      )
+  }
+  getpagination(){
+    this.studentservice.studentpagination(this.limit,this.page).subscribe(
+      (data:any)=>{
+        this.students=data
+      },
+      (err:any)=>{
+        alert("interval server error")
+      }
+  
     )
   }
   delete(id:any){
