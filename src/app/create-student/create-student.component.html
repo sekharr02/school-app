@@ -1,0 +1,108 @@
+<div class="container2">
+<div class="container1">
+    <form action="" [formGroup]="studentform" class="">
+        <h3>Student form</h3>
+        <div class="hello">
+        <div class="left1">
+        <div style="display: flex; align-items: center;">
+        <label for=" " class="" >name :</label>
+        <input type="text" placeholder="name" formControlName="name" class="form-control w-75  mb-4 mr-sm-2" >
+        <br>
+    </div> 
+    <div style="display: flex; align-items: center;">
+        <label for="">class :</label>
+        <input type="number" placeholder="class" formControlName="class" class="form-control w-75  mb-4 mr-sm-2">
+        <br>
+        </div>
+    
+    <div style="display: flex; align-items: center;">
+        <label for="">Fathername :</label>
+        <input type="text" placeholder="Fathername" formControlName="fathername" class="form-control w-75  mb-4 mr-sm-2">
+        <br>
+    </div> 
+
+      <div style="display: flex; align-items: center;">
+        <label for="">email :</label>
+        <input type="email" placeholder="email" formControlName="email" class="form-control w-75  mb-4 mr-sm-2">
+        <br>
+        </div>
+        <div style="display: flex; align-items: center;">
+        <label for="">dob :</label>
+        <input type="date" placeholder="date of birth" formControlName="dob" class="form-control w-75  mb-4 mr-sm-2">
+        </div>
+        <br>
+        <main formGroupName="address">
+            <div style="display: flex; align-items: center;">
+            <label for="">address line :</label>
+            <input type="text" formControlName="addressline" class="form-control w-75  mb-4 mr-sm-2">
+            </div>
+            <br>
+            <div style="display: flex; align-items: center;">
+            <label for="">city :</label>
+            <input type="text" formControlName="city" class="form-control w-75  mb-4 mr-sm-2">
+            </div>
+            <br>
+            <div style="display: flex; align-items: center;">
+            <label for="">state :</label>
+            <input type="text" formControlName="state" class="form-control w-75  mb-4 mr-sm-2">
+            </div>
+            <br>
+            <div style="display: flex; align-items: center;">
+            <label for="">pincode :</label>
+            <input type="text" formControlName="pincode" class="form-control w-75  mb-4 mr-sm-2">
+            <div class="text text-danger" *ngIf="studentform.get('address')?.get('pincode')?.invalid&& studentform.get('address')?.get('pincode')?.touched">
+                <p *ngIf="studentform.get('address')?.get('pincode')?.errors?.['required']">this field is required</p>
+                <p *ngIf="studentform.get('address')?.get('pincode')?.errors?.['min']">minmum 6 numbers required</p>
+                <p *ngIf="studentform.get('address')?.get('pincode')?.errors?.['max']">maximum 6 numbers alowed</p>
+            </div>
+            </div>
+            <br>
+        </main>
+    </div>
+        <div class="right1">
+        <button (click)="add()" class="btn btn-dark">marks</button>
+        <div formArrayName="cards">
+            <div *ngFor="let card of formarray.controls; let i=index">
+                <div formGroupName="{{i}}" class="cards">
+                    <div style="display: flex; align-items: center;">
+                    <label for="">class :</label>
+                    <input type="number" formControlName="class" class="form-control w-75  mb-2 mr-sm-2">
+                    </div>
+                    <br>
+                    <div style="display: flex; align-items: center;">
+                    <label for="">year :</label>
+                    <input type="month" formControlName="year" class="form-control w-75  mb-2 mr-sm-2">
+                    </div>
+                    <br>
+                    <div style="display: flex; align-items: center;">
+                    <label for="">percentage :</label>
+                    <input type="number" formControlName="percentage" class="form-control w-75  mb-2 mr-sm-2">
+                    </div>
+                    <br>
+
+                    <button class="btn btn-danger" (click)="delete(i)">delete</button>
+                </div>
+            </div>
+        </div>
+
+        <label for="" class="mt-4">type :</label>
+        <input type="radio" name="type" formControlName='type' value="day scholar">
+        <label for="">day scholar</label>
+        <input type="radio" name="type" formControlName='type' value="residential">
+        <label for="">residential</label>
+
+        <div style="display: flex; align-items: center;" *ngIf="studentform.get('type')?.value== 'day scholar'" >
+            <label for="">Bus fee :</label>
+            <input type="number" formControlName="busfee" class="form-control w-75  mb-4 mr-sm-2">
+        </div>
+        <div style="display: flex;align-items: center;" *ngIf="studentform.get('type')?.value=='residential'">
+            <label for="">Hostel fee :</label>
+            <input type="number" formControlName="hostelfee" class="form-control w-75  mb-4 mr-sm-2">
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="submit()">submit</button>
+        </div>
+    </div>
+    </form>
+</div>
+</div>

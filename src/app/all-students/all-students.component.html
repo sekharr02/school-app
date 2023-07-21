@@ -1,0 +1,33 @@
+
+<input type="text" >
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>class</th>
+            <th>fathername</th>
+            <th>email</th>
+            <th>dob</th>
+            <th>addressline</th>
+            <th>city</th>
+            <th>state</th> 
+            <th>pincode</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{student.name}}</td>
+            <td>{{student.class}}</td>
+            <td>{{student.fathername}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.dob}}</td>
+            <td>{{student.address?.addressline}}</td>
+            <td>{{student.address?.city}}</td>
+            <td>{{student.address?.state}}</td>
+            <td>{{student.address?.pincode}}</td>
+            <td><button class="btn btn-danger" (click)="delete(student.id)">delete</button></td>
+        </tr>
+
+    </tbody>
+</table> 

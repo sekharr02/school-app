@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+
+
+<div class="container3">
+    <div class="left1">
+     <h1>Dashboard</h1>
+     <hr>
+     <h3 routerLink="home">Home</h3>
+     <h3 routerLink="createstudent">Create-student</h3>
+     <h3 routerLink="allstudent">All-Students</h3>
+     <button class="btn btn-danger" (click)="remove()" >logout</button>
+    </div>
+    <div class="right1">
+        <router-outlet></router-outlet>
+
+    </div>
+   
+
+</div>
