@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../student.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-student',
@@ -9,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-student.component.scss']
 })
 export class CreateStudentComponent {
+  public id:any={};
 
   public studentform:FormGroup=new FormGroup({
     name: new FormControl(),
@@ -45,10 +47,33 @@ export class CreateStudentComponent {
   delete(i:number){
     this.formarray.removeAt(i);
   }
-  constructor(private studentservice:StudentService, private toastr: ToastrService){}
+  constructor(private studentservice:StudentService, private toastr: ToastrService,private activatedroute:ActivatedRoute){
+    activatedroute.params.subscribe(
+      (data:any)=>{
+        this.id=data.id;
+        studentservice.student(this.id).subscribe(
+          (data:any)=>{
+            this.studentform.patchValue(data)
+          }
+        )
+      }
+    )
+
+  }
 
   submit(){
     console.log(this.studentform)
+    if(this.id?.length>0){
+      this.studentservice.edit(this.id,this.studentform.value).subscribe(
+        (data:any)=>{
+          this.toastr.success('vehicle updated successfully')
+        },
+        (err:any)=>{
+          this.toastr.error('vehicle updation failed')
+        }
+      )
+    }
+    else{
     this.studentservice.createstudent(this.studentform.value).subscribe(
       (data:any)=>{
         this.toastr.success("created successfully");
@@ -59,5 +84,5 @@ export class CreateStudentComponent {
       }
     )
   }
-
+  }
 }

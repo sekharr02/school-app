@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StudentService } from '../student.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-students',
@@ -19,7 +20,7 @@ export class AllStudentsComponent {
   public page:any='';
 
 
-  constructor(private studentservice:StudentService,private toastr: ToastrService){
+  constructor(private studentservice:StudentService,private toastr: ToastrService,private router:Router){
     studentservice.getstudents().subscribe(
       (data:any)=>{
         this.students=data
@@ -60,6 +61,13 @@ export class AllStudentsComponent {
       }
   
     )
+  }
+
+  view(id:any){
+    this.router.navigateByUrl('dashboard/studentdetail/'+id)
+  }
+  edit(id:any){
+    this.router.navigateByUrl('dashboard/edit/'+id)
   }
   delete(id:any){
     this.studentservice.delete(id).subscribe(

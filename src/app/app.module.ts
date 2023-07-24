@@ -12,8 +12,8 @@ import { CreateStudentComponent } from './create-student/create-student.componen
 import { AllStudentsComponent } from './all-students/all-students.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastrModule } from 'ngx-toastr';
+import { StudentComponent } from './student/student.component';
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     CreateStudentComponent,
     AllStudentsComponent,
+    StudentComponent,
 
   ],
   imports: [
@@ -41,7 +42,7 @@ import { ToastrModule } from 'ngx-toastr';
     
     
   ],
-  providers: [],
+  // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
